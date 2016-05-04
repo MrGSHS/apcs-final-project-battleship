@@ -16,6 +16,7 @@ public class Battleship {
     private int row;
     private int col;
     private int[] conditionOfShip;
+    private String orientation;
     private boolean north= false;
     private boolean east = false;
     private boolean south = false;
@@ -25,13 +26,14 @@ public class Battleship {
     /**
      * @param args the command line arguments
      */
-    public Battleship(int size, int speed, Pattern pattern, int row, int col, String orientation, String direction){
+    public Battleship(int size, int speed, Pattern pattern, int row, int col, String orientation/*, String direction*/){
         this.size = size;
         this.speed = speed;
         this.pattern = pattern;
         this.row = row;
         this.col = col;
         conditionOfShip = new int[size];
+        this.orientation = orientation;
         if(orientation.equals("north"))
             north = true;
         else if(orientation.equals("east"))
@@ -40,14 +42,38 @@ public class Battleship {
             south = true;
         else
             west = true;
-        if(direction.equals("cw"))
-            cw = true;
-        else
-            ccw = true;
+//        if(direction.equals("cw"))
+//            cw = true;
+//        else
+//            ccw = true;
     }
     
-    int[][] move(int[][] gameBoard){
-        int[] tempArray = pattern.getPosition(speed, row, col);
+    public int getRow(){
+        return row;
+    }
+    
+    public int getCol(){
+        return col;
+    }
+    
+    public int getSpeed(){
+        return speed;
+    }
+    
+    public String getOrientation(){
+        return orientation;
+    }
+    
+    public void setRow(int row){
+        this.row = row;
+    }
+    
+    public void setCol(int col){
+        this.col = col;
+    }
+    
+    public int[][] move(int[][] gameBoard){
+        int[] tempArray = pattern.getPosition(this);
         row = tempArray[0];
         col = tempArray[1];
         if(tempArray[2]==0){
