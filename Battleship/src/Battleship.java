@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+
 
 /**
  *
@@ -73,12 +73,8 @@ public class Battleship {
     }
     
     public int[][] move(int[][] gameBoard){
-        int[] tempArray = pattern.getPosition(this);
-        row = tempArray[0];
-        col = tempArray[1];
-        if(tempArray[2]==0){
-            
-        }
+        pattern.getNewPosition(this);
+        
     }
     
 }
