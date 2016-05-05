@@ -2,3 +2,5 @@
 /JavaApplication1/build/
 /Battleship/nbproject/private/
 /Battleship/build/
+.DS_Store
+*.class
