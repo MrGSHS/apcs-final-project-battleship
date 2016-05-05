@@ -10,5 +10,5 @@
  */
 public abstract class Pattern {
     public Pattern(){}
-    public abstract void getNewPosition();
+    public abstract void getNewPosition(Battleship battleship);
 }

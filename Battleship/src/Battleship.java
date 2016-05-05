@@ -75,6 +75,7 @@ public class Battleship {
     public int[][] move(int[][] gameBoard){
         pattern.getNewPosition(this);
         
+        
     }
     
 }

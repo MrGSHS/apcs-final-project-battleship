@@ -9,16 +9,23 @@
  * @author apieprz6
  */
 public class Rectangle extends Pattern {
-    
+    private final int boardSize=30;
     private int width,length;
-    private int[][] patternOnBoard = new int[30][30];
+    private int[][] patternOnBoard = new int[boardSize][boardSize];
     
+    /**
+     *
+     * @param startR
+     * @param startC
+     * @param width
+     * @param length
+     */
     public Rectangle(int startR, int startC, int width, int length){
         super();
         this.width=width;
         this.length=length;
-        for(int r=0;r<=30;r++){
-            for(int c=0;c<=30;c++){
+        for(int r=0;r<=boardSize;r++){
+            for(int c=0;c<=boardSize;c++){
                 if(r == startR  && c >= startC && c<=startC + width){
                     patternOnBoard[r][c]=1;
                 }
@@ -38,6 +45,7 @@ public class Rectangle extends Pattern {
         }
     }
     
+    @Override
     public void getNewPosition(Battleship battleship){
         int speed = battleship.getSpeed();
         
