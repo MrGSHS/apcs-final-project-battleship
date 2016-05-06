@@ -17,12 +17,9 @@ public class Battleship {
     private int col;
     private int[] conditionOfShip;
     private String orientation;
-    private boolean north= false;
-    private boolean east = false;
-    private boolean south = false;
-    private boolean west = false;
-    private boolean cw = false;
-    private boolean ccw = false;
+
+//    private boolean cw = false;
+//    private boolean ccw = false;
     /**
      * @param args the command line arguments
      */
@@ -34,14 +31,6 @@ public class Battleship {
         this.col = col;
         conditionOfShip = new int[size];
         this.orientation = orientation;
-        if(orientation.equals("north"))
-            north = true;
-        else if(orientation.equals("east"))
-            east = true;
-        else if(orientation.equals("south"))
-            south = true;
-        else
-            west = true;
 //        if(direction.equals("cw"))
 //            cw = true;
 //        else
@@ -74,6 +63,7 @@ public class Battleship {
     
     public int[][] move(int[][] gameBoard){
         pattern.getNewPosition(this);
+        
         
         
     }
