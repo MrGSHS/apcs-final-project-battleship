@@ -122,5 +122,9 @@ public class Rectangle extends Pattern {
             }
         }
         //NOT ACCOUNTING FOR SPEED > LENGTH OR WIDTH
+        if(battleship.getRow() == startR && battleship.getCol() != startC){
+            battleship.setOrientation(Battleship.east);
+        }
+        //else if(battleship.getCol() == )
     }
 }
