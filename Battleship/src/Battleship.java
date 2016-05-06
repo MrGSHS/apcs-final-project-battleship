@@ -63,8 +63,8 @@ public class Battleship {
     
     public int[][] move(int[][] gameBoard){
         pattern.getNewPosition(this);
-        
-        
+        int lengthOfPattern = pattern.getLength();
+        int widthOfPattern = pattern.getWidth();
         
     }
     
