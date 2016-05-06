@@ -66,19 +66,6 @@ public class Rectangle extends Pattern {
     @Override
     public void getNewPosition(Battleship battleship){
         int speed = battleship.getSpeed();
-        String orientation = battleship.getOrientation();
-        boolean north = false;
-        boolean east = false;
-        boolean south = false;
-        boolean west = false;
-        if(orientation.equals("north"))
-            north = true;
-        else if(orientation.equals("east"))
-            east = true;
-        else if(orientation.equals("south"))
-            south = true;
-        else
-            west = true;
         int intR = battleship.getRow();
         int intC = battleship.getCol();
         if(intR == startR){
@@ -121,7 +108,6 @@ public class Rectangle extends Pattern {
                 battleship.setRow(startR);
             }
         }
-        //NOT ACCOUNTING FOR SPEED > LENGTH OR WIDTH
         if(battleship.getRow() == startR && battleship.getCol() != startC){
             battleship.setOrientation(Battleship.east);
         }
