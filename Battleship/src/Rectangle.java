@@ -55,6 +55,14 @@ public class Rectangle extends Pattern {
         return width;
     }
     
+    public int getStartR(){
+        return startR;
+    }
+        
+        public int getStartC(){
+        return startC;
+    }
+        
     @Override
     public void getNewPosition(Battleship battleship){
         int speed = battleship.getSpeed();

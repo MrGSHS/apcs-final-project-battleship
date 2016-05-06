@@ -13,4 +13,8 @@ public abstract class Pattern {
     public abstract void getNewPosition(Battleship battleship);
     public abstract int getLength();
     public abstract int getWidth();
+    public abstract int getStartR();
+    public abstract int getStartC();
+
+
 }
