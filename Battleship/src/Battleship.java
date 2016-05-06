@@ -84,10 +84,21 @@ public class Battleship {
             gameBoard[startC][i] = 0;
             gameBoard[startC+widthOfPattern][i] = 0;
         }
-        
-        
         pattern.getNewPosition(this);
-        
+        if(orientation.equals(east)){
+            if(col+size <= startC+widthOfPattern){
+                for(int i=0; i<=size; i++){
+                    gameBoard[startR][startC+i]=1;
+                }
+            }
+            else{
+                int down = (col+size) - (startC+widthOfPattern);
+                for(int i=0; i<=size-down; i++){
+                    gameBoard[startR][startC+i] = 1;
+                }
+                //FOR LOOP FOR FILLING DOWN
+            }
+        }
     }
     
 }
