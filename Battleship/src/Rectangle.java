@@ -80,8 +80,8 @@ public class Rectangle extends Pattern {
                 battleship.setRow(intR+speed);
             }
             else{
-                int over = (intR + speed) - (startR + length);
-                battleship.setCol(intC + over);
+                int right = (intR + speed) - (startR + length);
+                battleship.setCol(intC + right);
                 battleship.setRow(intR + length);
             }
         }
@@ -90,11 +90,21 @@ public class Rectangle extends Pattern {
                 battleship.setCol(intC+speed);
             }
             else{
-                //START HERE, IF PAST BOTTOM RIGHT CORNER
+                int up = (intC+speed) - (startC+width);
+                battleship.setRow(startR+length-up);
+                battleship.setCol(startC+width);
             }
         }
-        
-        //ADD TOPRIGHT CORNER
-        
+        else{
+            if(intR - speed >= startR){
+                battleship.setRow(intR-speed);
+            }
+            else{
+                int left = startR - (intR - speed);
+                battleship.setCol((startC + width) - left);
+                battleship.setRow(startR);
+            }
+        }
+        //NOT ACCOUNTING FOR SPEED > LENGTH OR WIDTH
     }
 }
