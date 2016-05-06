@@ -125,6 +125,17 @@ public class Rectangle extends Pattern {
         if(battleship.getRow() == startR && battleship.getCol() != startC){
             battleship.setOrientation(Battleship.east);
         }
-        //else if(battleship.getCol() == )
+        else if(battleship.getRow() == startR+length && battleship.getCol() != startC ){
+            battleship.setOrientation(Battleship.west);
+        }
+        else if(battleship.getRow() != startR && battleship.getRow()!= startR+length && battleship.getCol()== startC){
+            battleship.setOrientation(Battleship.south);
+            
+        }
+        else if(battleship.getRow() != startR && battleship.getRow()!= startR+length && battleship.getCol()== startC+width){
+            battleship.setOrientation(Battleship.north);
+            
+        }
+        }
     }
-}
+
