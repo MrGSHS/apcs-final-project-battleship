@@ -4,3 +4,4 @@
 /Battleship/build/
 .DS_Store
 *.class
+/Battleship/dist/

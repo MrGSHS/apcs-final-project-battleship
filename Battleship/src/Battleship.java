@@ -86,19 +86,62 @@ public class Battleship {
         }
         pattern.getNewPosition(this);
         if(orientation.equals(east)){
-            if(col+size <= startC+widthOfPattern){
+            if(col+size <= startC+widthOfPattern){ //Isn't it just size? why col+size?
                 for(int i=0; i<=size; i++){
                     gameBoard[startR][startC+i]=1;
                 }
             }
             else{
-                int down = (col+size) - (startC+widthOfPattern);
-                for(int i=0; i<=size-down; i++){
+                int up = (col+size) - (startC+widthOfPattern);
+                for(int i=0; i<=size-up; i++){ //check the less than and equal to math
                     gameBoard[startR][startC+i] = 1;
                 }
-                //FOR LOOP FOR FILLING DOWN
+                for(int j=0; j<up;j++){ //same with comment above
+                   gameBoard[startR+j][startC]=1; 
+                }   
             }
         }
+        if(orientation.equals(north)){
+            if(row+size<=startR+lengthOfPattern){
+                for(int i=0;i<=size;i++)
+                    gameBoard[startR+lengthOfPattern-i][startC]=1;
+            }
+            else{
+                int left=(row+size)-(startR+lengthOfPattern);
+                for(int i=0;i<=size-left;i++)
+                    gameBoard[startR-i][startC]=1;
+                for(int j=0;j<left;j++)
+                    gameBoard[startR][startC-j]=1;
+            }
+        }
+        if(orientation.equals(west)){
+            if((col+size)<=(startC+widthOfPattern)){
+                for(int i=0;i<=size;i++)
+                    gameBoard[startR][startC-i]=1;
+            }
+            else{
+                int down=(col+size)-(startC+widthOfPattern);
+                for(int i=0;i<=size-down;i++)
+                    gameBoard[startR][startC-i]=1;
+                for(int j=0;j<down;j++)
+                    gameBoard[startR+j][startC]=1; //shouldn't startC be col?        
+            }            
+        }
+        if(orientation.equals(south)){
+            if(row+size<=startR+lengthOfPattern){
+                for(int i=0;i<=size;i++){
+                    gameBoard[startR+i][startC]=1;
+                }
+            }
+            else{
+                int right=(row+size)-(startR+lengthOfPattern);
+                for(int i=0;i<size-right;i++)
+                    gameBoard[startR+i][startC]=1;
+                for(int j=0;j<right;j++)
+                    gameBoard[startR][startC+j]=1;
+            }
+        }
+        return gameBoard;
     }
     
 }
