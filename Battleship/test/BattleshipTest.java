@@ -142,6 +142,7 @@ public class BattleshipTest {
         int[][] expResult = null;
         int[][] result = instance.move(gameBoard);
         assertArrayEquals(expResult, result);
+        System.out.print(gameBoard);
         // TODO review the generated test code and remove the default call to fail.
     }
     
