@@ -81,8 +81,14 @@ public class Battleship {
             gameBoard[startR+lengthOfPattern][i] = 0;
         }
         for(int i=startR; i<=startR+lengthOfPattern; i++){
-            gameBoard[startC][i] = 0;
-            gameBoard[startC+widthOfPattern][i] = 0;
+            gameBoard[i][startC] = 0;
+            gameBoard[i][startC+widthOfPattern] = 0;
+        }
+        for(int r=0;r<gameBoard.length;r++){
+            for (int c=0;c<gameBoard[0].length;c++){
+                System.out.print(gameBoard[r][c]+ " ");
+            }
+            System.out.println();
         }
         pattern.getNewPosition(this);
         if(orientation.equals(east)){
@@ -129,11 +135,13 @@ public class Battleship {
         }
         if(orientation.equals(south)){
             if(row+size<=startR+lengthOfPattern){
+                System.out.println("enters if");
                 for(int i=0;i<=size;i++){
-                    gameBoard[startR+i][startC]=1;
+                    gameBoard[row+i][startC]=1;
                 }
             }
             else{
+                System.out.println("enters else");
                 int right=(row+size)-(startR+lengthOfPattern);
                 for(int i=0;i<size-right;i++)
                     gameBoard[startR+i][startC]=1;

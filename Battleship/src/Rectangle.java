@@ -28,16 +28,16 @@ public class Rectangle extends Pattern {
         this.startC = startC;
         for(int r=0;r<boardSize;r++){
             for(int c=0;c<boardSize;c++){
-                if(r == startR  && c >= startC && c<=startC + width){
+                if(r == startR  && c >= startC && c<startC + width){
                     patternOnBoard[r][c]=1;
                 }
-                else if(r==startR+length && c >= startC && c<=startC + width){  
+                else if(r==startR+length-1 && c >= startC && c<startC + width){  
                     patternOnBoard[r][c]=1;
                 }
-                else if(c==startC && r >=startR && r<=startR + length){
+                else if(c==startC && r >=startR && r<startR + length){
                     patternOnBoard[r][c]=1;
                 }
-                else if(c==startC+width && r>=startR && r<=startR + length){
+                else if(c==startC+width-1 && r>=startR && r<startR + length){
                     patternOnBoard[r][c]=1;
                 }
                 else{
@@ -125,12 +125,12 @@ public class Rectangle extends Pattern {
         }
         public String toString(){
             String board ="";
-            for(int i=0;i<patternOnBoard.length;i++){
-                for(int q=0;q<patternOnBoard[i].length;q++){
-                    board+=patternOnBoard[i][q]+" ";
+                for(int i=0;i<patternOnBoard.length;i++){
+                    for(int q=0;q<patternOnBoard[i].length;q++){
+                        board+=patternOnBoard[i][q]+" ";
+                    }
+                    board += "\n";
                 }
-                board += "\n";
-            }
             return board;
         }
     }
