@@ -26,8 +26,8 @@ public class Rectangle extends Pattern {
         this.length=length; // HEIGHT U DUMBASS
         this.startR = startR;
         this.startC = startC;
-        for(int r=0;r<=boardSize;r++){
-            for(int c=0;c<=boardSize;c++){
+        for(int r=0;r<boardSize;r++){
+            for(int c=0;c<boardSize;c++){
                 if(r == startR  && c >= startC && c<=startC + width){
                     patternOnBoard[r][c]=1;
                 }
