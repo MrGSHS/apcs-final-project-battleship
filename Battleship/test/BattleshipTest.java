@@ -31,7 +31,9 @@ public class BattleshipTest {
     }
     
     @Before
-    public void setUp() {   
+    public void setUp() {
+        Pattern rect=new Rectangle(5,5,6,6);
+        Battleship battle= new Battleship(4,2,rect,5,5,"south");    
     }
     
     @After
