@@ -123,5 +123,16 @@ public class Rectangle extends Pattern {
                         
         }
         }
+        public String toString(){
+            String board ="";
+            for(int i=0;i<patternOnBoard.length;i++){
+                for(int q=0;q<patternOnBoard[i].length;q++){
+                    board+=patternOnBoard[i][q]+" ";
+                }
+                board += "\n";
+            }
+            return board;
+        }
     }
+ 
 
