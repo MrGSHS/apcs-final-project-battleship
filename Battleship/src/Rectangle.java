@@ -9,10 +9,11 @@
  * @author apieprz6
  */
 public class Rectangle extends Pattern {
-    private final int boardSize=30;
-    private int width,length,startR,startC;
+
+    private final int boardSize = 30;
+    private int width, length, startR, startC;
     private int[][] patternOnBoard = new int[boardSize][boardSize];
-    
+
     /**
      *
      * @param startR
@@ -20,119 +21,127 @@ public class Rectangle extends Pattern {
      * @param width
      * @param length
      */
-    public Rectangle(int startR, int startC, int width, int length){
+    public Rectangle(int startR, int startC, int width, int length) {
         super();
-        this.width=width;
-        this.length=length; // HEIGHT U DUMBASS
+        this.width = width;
+        this.length = length; // HEIGHT U DUMBASS
         this.startR = startR;
         this.startC = startC;
-        for(int r=0;r<boardSize;r++){
-            for(int c=0;c<boardSize;c++){
-                if(r == startR  && c >= startC && c<startC + width){
-                    patternOnBoard[r][c]=1;
-                }
-                else if(r==startR+length-1 && c >= startC && c<startC + width){  
-                    patternOnBoard[r][c]=1;
-                }
-                else if(c==startC && r >=startR && r<startR + length){
-                    patternOnBoard[r][c]=1;
-                }
-                else if(c==startC+width-1 && r>=startR && r<startR + length){
-                    patternOnBoard[r][c]=1;
-                }
-                else{
-                 patternOnBoard[r][c] = 0;
+        for (int r = 0; r < boardSize; r++) {
+            for (int c = 0; c < boardSize; c++) {
+                if (r == startR && c >= startC && c < startC + width) {
+                    patternOnBoard[r][c] = 1;
+                } else if (r == startR + length - 1 && c >= startC && c < startC + width) {
+                    patternOnBoard[r][c] = 1;
+                } else if (c == startC && r >= startR && r < startR + length) {
+                    patternOnBoard[r][c] = 1;
+                } else if (c == startC + width - 1 && r >= startR && r < startR + length) {
+                    patternOnBoard[r][c] = 1;
+                } else {
+                    patternOnBoard[r][c] = 0;
                 }
             }
         }
     }
-    
-    public int getLength(){
+
+    public int getLength() {
         return length;
     }
-    
-    public int getWidth(){
+
+    public int getWidth() {
         return width;
     }
-    
-    public int getStartR(){
+
+    public int getStartR() {
         return startR;
     }
-        
-        public int getStartC(){
+
+    public int getStartC() {
         return startC;
     }
-        
+
+    public void updateOrientation(Battleship battleship) {
+        if (battleship.getRow() == startR && battleship.getCol() != startC) {
+            battleship.setOrientation(Battleship.east);
+        } 
+        else if (battleship.getRow() == startR + length && battleship.getCol() != startC + width) {
+            battleship.setOrientation(Battleship.west);
+        } 
+        else if (battleship.getRow() != startR + length && battleship.getCol() == startC) {
+            battleship.setOrientation(Battleship.south);
+        } 
+        else if (battleship.getRow() != startR && battleship.getCol() == startC + width) {
+            battleship.setOrientation(Battleship.north);
+        }
+    }
+
     @Override
-    public void getNewPosition(Battleship battleship){
+    public void getNewPosition(Battleship battleship) {
         int speed = battleship.getSpeed();
         int intR = battleship.getRow();
         int intC = battleship.getCol();
-        if(intR == startR){
-            if(intC - speed >= startC){
-                battleship.setCol(intC-speed);
-            }
-            else{
+        if (intR == startR) {
+            if (intC - speed >= startC) {
+                battleship.setCol(intC - speed);
+            } 
+            else {
                 int down = startC - (intC - speed);
                 battleship.setRow(intR - down);
                 battleship.setCol(startC);
             }
-        }
-        else if(intC == startC){
-            if(intR + speed <= startR + length){
-                battleship.setRow(intR+speed);
-            }
-            else{
+        } 
+        else if (intC == startC) {
+            if (intR + speed <= startR + length) {
+                battleship.setRow(intR + speed);
+            } 
+            else {
                 int right = (intR + speed) - (startR + length);
                 battleship.setCol(intC + right);
                 battleship.setRow(intR + length);
             }
-        }
-        else if(intR == startR+length){
-            if(intC+speed <= startC + width){
-                battleship.setCol(intC+speed);
+        } 
+        else if (intR == startR + length) {
+            if (intC + speed <= startC + width) {
+                battleship.setCol(intC + speed);
+            } 
+            else {
+                int up = (intC + speed) - (startC + width);
+                battleship.setRow(startR + length - up);
+                battleship.setCol(startC + width);
             }
-            else{
-                int up = (intC+speed) - (startC+width);
-                battleship.setRow(startR+length-up);
-                battleship.setCol(startC+width);
-            }
+        } 
+        else if (intR - speed >= startR) {
+            battleship.setRow(intR - speed);
+        } 
+        else {
+            int left = startR - (intR - speed);
+            battleship.setCol((startC + width) - left);
+            battleship.setRow(startR);
         }
-        else{
-            if(intR - speed >= startR){
-                battleship.setRow(intR-speed);
-            }
-            else{
-                int left = startR - (intR - speed);
-                battleship.setCol((startC + width) - left);
-                battleship.setRow(startR);
-            }
-        }
-        if(battleship.getRow() == startR && battleship.getCol() != startC){
-            battleship.setOrientation(Battleship.east);
-        }
-        else if(battleship.getRow() == startR+length && battleship.getCol() != startC+width ){
-            battleship.setOrientation(Battleship.west);
-        }
-        else if(battleship.getRow() != startR+length && battleship.getCol()== startC){
-            battleship.setOrientation(Battleship.south);
-            
-        }
-        else if(battleship.getRow() != startR && battleship.getCol() == startC+width ){
-            battleship.setOrientation(Battleship.north);
-                        
-        }
-        }
-        public String toString(){
-            String board ="";
-                for(int i=0;i<patternOnBoard.length;i++){
-                    for(int q=0;q<patternOnBoard[i].length;q++){
-                        board+=patternOnBoard[i][q]+" ";
-                    }
-                    board += "\n";
-                }
-            return board;
-        }
+        
+        updateOrientation(battleship);
+//        if (battleship.getRow() == startR && battleship.getCol() != startC) {
+//            battleship.setOrientation(Battleship.east);
+//        } 
+//        else if (battleship.getRow() == startR + length && battleship.getCol() != startC + width) {
+//            battleship.setOrientation(Battleship.west);
+//        } 
+//        else if (battleship.getRow() != startR + length && battleship.getCol() == startC) {
+//            battleship.setOrientation(Battleship.south);
+//        } 
+//        else if (battleship.getRow() != startR && battleship.getCol() == startC + width) {
+//            battleship.setOrientation(Battleship.north);
+//        }
     }
- 
 
+    public String toString() {
+        String board = "";
+        for (int i = 0; i < patternOnBoard.length; i++) {
+            for (int q = 0; q < patternOnBoard[i].length; q++) {
+                board += patternOnBoard[i][q] + " ";
+            }
+            board += "\n";
+        }
+        return board;
+    }
+}
