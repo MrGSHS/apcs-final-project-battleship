@@ -74,8 +74,8 @@ public class Battleship {
         pattern.getNewPosition(this);
         
         //CLEAR CURRENT PATTERN
-        int lengthOfPattern = pattern.getLength();
-        int widthOfPattern = pattern.getWidth();
+        int lengthOfPattern = pattern.getLength()-1;
+        int widthOfPattern = pattern.getWidth()-1;
         //if (pattern instanceof rectangle)
         int startR = pattern.getStartR();
         int startC = pattern.getStartC();
@@ -129,12 +129,12 @@ public class Battleship {
                     gameBoard[row][col+i]=1;
 
             }
-            else{
+            else{//FIXED
                 int down=(col+size)-(startC+widthOfPattern);
-                for(int i=0;i<=size-down;i++)
-                    gameBoard[row][col-i]=1;
+                for(int i=0;i<size-down;i++)
+                    gameBoard[row][col+i]=1;
                 for(int j=0;j<down;j++)
-                    gameBoard[row+j][col]=1; //shouldn't startC be col?        
+                    gameBoard[row+j][startC+widthOfPattern]=1; 
             }            
         }
         if(orientation.equals(south)){

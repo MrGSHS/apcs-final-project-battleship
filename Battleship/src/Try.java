@@ -13,7 +13,7 @@ public class Try {
     public static void main(String[] args) {
         Pattern rect = new Rectangle(0, 0, 6, 6);
         System.out.println(rect.toString());
-        Battleship battle = new Battleship(4, 0, rect, 0, 1);
+        Battleship battle = new Battleship(4, 0, rect, 0, 3);
         System.out.println(battle.getOrientation() + "\n" + "move");
         int[][] gameBoard = new int[30][30];
         battle.move(gameBoard);
