@@ -94,33 +94,34 @@ public class Battleship {
 //            System.out.println();
 //        }
         pattern.getNewPosition(this);
+        System.out.println(row + " " + col);
         if(orientation.equals(east)){
-            if(col+size <= startC+widthOfPattern){ //Isn't it just size? why col+size?
+            if(col-size >= startC){ //FIXED
                 for(int i=0; i<size; i++){
-                    gameBoard[row][col+i]=1;
+                    gameBoard[row][col-i]=1;
                 }
             }
             else{
-                int up = (col+size) - (startC+widthOfPattern);
+                int up = startC - (col-size);
                 for(int i=0; i<=size-up; i++){ //check the less than and equal to math
-                    gameBoard[row][col+i] = 1;
+                    gameBoard[row][col-i] = 1;
                 }
                 for(int j=0; j<up;j++){ //same with comment above
-                   gameBoard[row+j][col]=1; 
+                   gameBoard[row-j][startC]=1; 
                 }   
             }
         }
         if(orientation.equals(north)){
             if(row+size<=startR+lengthOfPattern){
                 for(int i=0;i<size;i++)
-                    gameBoard[startR+lengthOfPattern-i][startC]=1;
+                    gameBoard[row+i][col]=1;
             }
             else{
                 int left=(row+size)-(startR+lengthOfPattern);
                 for(int i=0;i<=size-left;i++)
-                    gameBoard[row-i][col]=1;
+                    gameBoard[row+i][col]=1;
                 for(int j=0;j<left;j++)
-                    gameBoard[row][col-j]=1;
+                    gameBoard[startR + lengthOfPattern][col-j]=1;
             }
         }
         if(orientation.equals(west)){//FIXED
@@ -137,22 +138,19 @@ public class Battleship {
                     gameBoard[row+j][startC+widthOfPattern]=1; 
             }            
         }
-        if(orientation.equals(south)){
-            if(row+size<=startR+lengthOfPattern){
-                System.out.println("enters if");
+        if(orientation.equals(south)){//FIXED
+            if(row-size>=startR){
                 for(int i=0;i<size;i++){
-                    gameBoard[row+i][col]=1;
+                    gameBoard[row-i][col]=1;
                 }
             }
             else{
-                System.out.println("enters else");
-                int right=(row+size)-(startR+lengthOfPattern);
+                int right= startR - (row-size);
                 for(int i=0;i<size-right;i++){
-                    gameBoard[row+i][col]=1;
-                        System.out.print("First if");}
+                    gameBoard[row-i][col]=1;
+                }
                 for(int j=0;j<right;j++){
-                    gameBoard[row][col+j]=1;
-                                System.out.print("second if");
+                    gameBoard[startR][col+j]=1;
                 }
 
             }
