@@ -23,8 +23,8 @@ public class Rectangle extends Pattern {
      */
     public Rectangle(int startR, int startC, int width, int length) {
         super();
-        this.width = width;
-        this.length = length; // HEIGHT U DUMBASS
+        this.width = width-1;
+        this.length = length-1; // HEIGHT U DUMBASS
         this.startR = startR;
         this.startC = startC;
         for (int r = 0; r < boardSize; r++) {
@@ -45,11 +45,11 @@ public class Rectangle extends Pattern {
     }
 
     public int getLength() {
-        return length;
+        return length+1;
     }
 
     public int getWidth() {
-        return width;
+        return width+1;
     }
 
     public int getStartR() {
@@ -64,20 +64,20 @@ public class Rectangle extends Pattern {
         if (battleship.getRow() == startR && battleship.getCol() != startC) {
             battleship.setOrientation(Battleship.west);
         } 
-        else if (battleship.getRow() == startR + length-1 && battleship.getCol() != startC + width-1) {
+        else if (battleship.getRow() == startR + length && battleship.getCol() != startC + width) {
             battleship.setOrientation(Battleship.east);
         } 
-        else if (battleship.getRow() != startR + length-1 && battleship.getCol() == startC) {
+        else if (battleship.getRow() != startR + length && battleship.getCol() == startC) {
             battleship.setOrientation(Battleship.south);
         } 
-        else if (battleship.getRow() != startR && battleship.getCol() == startC + width-1) {
+        else if (battleship.getRow() != startR && battleship.getCol() == startC + width) {
             battleship.setOrientation(Battleship.north);
         }
     }
 
     @Override
     public void getNewPosition(Battleship battleship) {
-        int speed = battleship.getSpeed();
+        int speed = battleship.getSpeed()-1;
         int intR = battleship.getRow();
         int intC = battleship.getCol();
         if (intR == startR) {
