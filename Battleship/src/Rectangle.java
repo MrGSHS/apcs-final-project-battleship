@@ -62,10 +62,10 @@ public class Rectangle extends Pattern {
 
     public void updateOrientation(Battleship battleship) {
         if (battleship.getRow() == startR && battleship.getCol() != startC) {
-            battleship.setOrientation(Battleship.east);
+            battleship.setOrientation(Battleship.west);
         } 
         else if (battleship.getRow() == startR + length && battleship.getCol() != startC + width) {
-            battleship.setOrientation(Battleship.west);
+            battleship.setOrientation(Battleship.east);
         } 
         else if (battleship.getRow() != startR + length && battleship.getCol() == startC) {
             battleship.setOrientation(Battleship.south);

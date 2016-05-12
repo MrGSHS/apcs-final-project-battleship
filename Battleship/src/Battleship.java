@@ -27,14 +27,15 @@ public class Battleship {
     /**
      * @param args the command line arguments
      */
-    public Battleship(int size, int speed, Pattern pattern, int row, int col, String orientation/*, String direction*/){
+    public Battleship(int size, int speed, Pattern pattern, int row, int col/*, String direction*/){
         this.size = size;
         this.speed = speed;
         this.pattern = pattern;
         this.row = row;
         this.col = col;
         conditionOfShip = new int[size];
-        this.orientation = orientation;
+        pattern.updateOrientation(this);
+        //this.orientation = orientation;
 //        if(direction.equals("cw"))
 //            cw = true;
 //        else
@@ -70,8 +71,8 @@ public class Battleship {
     }
     
     public int[][] move(int[][] gameBoard){
-                pattern.getNewPosition(this);
-
+        pattern.getNewPosition(this);
+        
         //CLEAR CURRENT PATTERN
         int lengthOfPattern = pattern.getLength();
         int widthOfPattern = pattern.getWidth();
@@ -86,12 +87,12 @@ public class Battleship {
             gameBoard[i][startC] = 0;
             gameBoard[i][startC+widthOfPattern] = 0;
         }
-        for(int r=0;r<gameBoard.length;r++){
-            for (int c=0;c<gameBoard[0].length;c++){
-                System.out.print(gameBoard[r][c]+ " ");
-            }
-            System.out.println();
-        }
+//        for(int r=0;r<gameBoard.length;r++){
+//            for (int c=0;c<gameBoard[0].length;c++){
+//                System.out.print(gameBoard[r][c]+ " ");
+//            }
+//            System.out.println();
+//        }
         pattern.getNewPosition(this);
         if(orientation.equals(east)){
             if(col+size <= startC+widthOfPattern){ //Isn't it just size? why col+size?
@@ -122,10 +123,10 @@ public class Battleship {
                     gameBoard[row][col-j]=1;
             }
         }
-        if(orientation.equals(west)){
+        if(orientation.equals(west)){//FIXED
             if((col+size)<=(startC+widthOfPattern)){
                 for(int i=0;i<size;i++)
-                    gameBoard[row][col-i]=1;
+                    gameBoard[row][col+i]=1;
 
             }
             else{
