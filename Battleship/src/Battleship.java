@@ -96,7 +96,7 @@ public class Battleship {
         pattern.getNewPosition(this);
         System.out.println(row + " " + col);
         if(orientation.equals(east)){
-            if(col-size >= startC){ //CONDITION DONE
+            if(col-size >= startC){ //HIT CONDITION DONE
                 for(int i=0; i<size; i++){
                     if(conditionOfShip[i] == 1){
                         gameBoard[row][col-i]=2;
