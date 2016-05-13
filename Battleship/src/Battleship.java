@@ -96,18 +96,33 @@ public class Battleship {
         pattern.getNewPosition(this);
         System.out.println(row + " " + col);
         if(orientation.equals(east)){
-            if(col-size >= startC){ //FIXED
+            if(col-size >= startC){ //CONDITION DONE
                 for(int i=0; i<size; i++){
-                    gameBoard[row][col-i]=1;
+                    if(conditionOfShip[i] == 1){
+                        gameBoard[row][col-i]=2;
+                    }
+                    else{
+                        gameBoard[row][col-i]=1;
+                    }
                 }
             }
             else{
                 int up = startC - (col-size);
                 for(int i=0; i<=size-up; i++){ //check the less than and equal to math
-                    gameBoard[row][col-i] = 1;
+                    if(conditionOfShip[i] == 1){
+                        gameBoard[row][col-i] = 2;
+                    }
+                    else{
+                        gameBoard[row][col-i] = 1;
+                    }
                 }
                 for(int j=0; j<up;j++){ //same with comment above
-                   gameBoard[row-j][startC]=1; 
+                    if(conditionOfShip[size-up]==1){
+                        gameBoard[row-j][startC]=2;
+                    }
+                    else{
+                        gameBoard[row-j][startC]=1;
+                    }
                 }   
             }
         }
