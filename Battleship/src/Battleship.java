@@ -1,3 +1,7 @@
+
+import java.awt.Color;
+import java.awt.Graphics;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -54,6 +58,10 @@ public class Battleship {
         return speed;
     }
     
+    public void setSpeed(int speed){
+        this.speed=speed;
+    }
+    
     public String getOrientation(){
         return orientation;
     }
@@ -68,6 +76,11 @@ public class Battleship {
     
     public void setCol(int col){
         this.col = col;
+    }
+    
+    
+    public void draw(Graphics g){
+        g.setColor(Color.BLACK);
     }
     
     public int[][] move(int[][] gameBoard){
