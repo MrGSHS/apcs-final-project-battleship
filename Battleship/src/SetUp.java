@@ -11,19 +11,33 @@
 import java.awt.*;
 import java.awt.Graphics;
 import java.awt.event.*;
+import java.awt.geom.Rectangle2D;
 
 public class SetUp extends javax.swing.JFrame implements MouseListener, MouseMotionListener {
+    //Battleship s1= new Battleship(3, speed , rect1, )
     
-    public void paint(Graphics g) {
-    g.setColor(Color.BLACK);
-    g.fillRect (415, 200, 50, 20);  
-  }
-
+    //public void paintComponent(Graphics g) {
+    //    super.paintComponent(g);
+    //s1.drawSetUp();  
+ // }
     /**
      * Creates new form SetUp
      */
+    private Rectangle2D.Float rect1= new Rectangle2D.Float(500, 200,10 , 30);
+
     public SetUp() {
         initComponents();
+        
+        
+    }
+
+    
+    public void paint(Graphics g){
+        super.paint(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        g2d.setColor(Color.BLACK);
+        g2d.fill(rect1);
     }
 
     /**
@@ -72,9 +86,9 @@ public class SetUp extends javax.swing.JFrame implements MouseListener, MouseMot
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(408, Short.MAX_VALUE)
+                .addContainerGap(395, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addGap(54, 54, 54))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,6 +145,8 @@ public class SetUp extends javax.swing.JFrame implements MouseListener, MouseMot
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
+    private int x;
+    private int y;
     @Override
     public void mouseClicked(MouseEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -138,7 +154,9 @@ public class SetUp extends javax.swing.JFrame implements MouseListener, MouseMot
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      x = e.getX();
+      y = e.getY();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -158,7 +176,16 @@ public class SetUp extends javax.swing.JFrame implements MouseListener, MouseMot
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    int dx = e.getX() - x;
+    int dy = e.getY() - y;
+    if (rect1.getBounds2D().contains(x, y)) {
+    rect1.x += dx;
+    rect1.y += dy;
+        repaint();
+    }
+    x += dx;
+    y += dy;
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

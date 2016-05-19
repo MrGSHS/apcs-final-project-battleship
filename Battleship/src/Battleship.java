@@ -79,7 +79,14 @@ public class Battleship {
     }
     
     
-    public void draw(Graphics g){
+    public void drawSetUp(int y,int x,Graphics g){
+        g.setColor(Color.BLACK);
+        g.drawRect(x, y, 10, 10*size);
+        
+        
+    }
+    
+    public void drawGame(Graphics g){
         g.setColor(Color.BLACK);
     }
     
