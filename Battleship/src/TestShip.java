@@ -8,7 +8,7 @@
  *
  * @author maorgozalzani
  */
-public class Try {
+public class TestShip  {
 
     public static void main(String[] args) {
         Pattern rect = new Rectangle(1, 1, 15, 6);
