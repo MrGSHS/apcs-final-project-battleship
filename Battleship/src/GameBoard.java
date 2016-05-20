@@ -1,3 +1,7 @@
+
+import java.awt.Color;
+import java.awt.Graphics;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,6 +12,9 @@
  *
  * @author alexpieprzycki
  */
+
+
+
 public class GameBoard {
     private final int width = 30;
     private final int length = 30;
@@ -25,9 +32,15 @@ public class GameBoard {
     }
     
     public void drawBoard(Graphics g){
+        g.setColor(Color.BLACK);
         for(int r=0;r<length;r++){
+            g.drawLine(r*30,0,1,900);
             for(int c=0;c<width;c++){
+                g.drawLine(0,c*30,900,1);
                 //HAVE IT DRAW RECTANGLES AT EVERY 1;
+                if(gameBoard[r][c] ==1){
+                    g.drawRect(r*30,c*30,30,30);
+                }
             }
         }
     }
