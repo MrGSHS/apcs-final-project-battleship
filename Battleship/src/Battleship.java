@@ -118,7 +118,7 @@ public class Battleship {
 //            System.out.println();
 //        }
         pattern.getNewPosition(this);
-        System.out.println(row + " " + col);
+        //System.out.println(row + " " + col);
         if(orientation.equals(east)){
             if(col-size >= startC){ //HIT CONDITION DONE
                 for(int i=0; i<size; i++){

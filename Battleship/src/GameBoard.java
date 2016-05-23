@@ -18,6 +18,7 @@ import java.awt.Graphics;
 public class GameBoard {
     private final int width = 30;
     private final int length = 30;
+    private final int boardSpacing = 20;
     private Battleship[] ships = new Battleship[6];
     private int[][] gameBoard = new int[length][width];
     
@@ -26,6 +27,7 @@ public class GameBoard {
         for(int i=0; i<ships.length;i++){
             int tempSpeed = ships[i].getSpeed();
             ships[i].setSpeed(0);
+            System.out.println("Speed " + ships[i].getSpeed() + " Row: " + ships[i].getRow() + " Col: " + ships[i].getCol());
             gameBoard = ships[i].move(gameBoard);
             ships[i].setSpeed(tempSpeed);
         }
@@ -34,14 +36,16 @@ public class GameBoard {
     public void drawBoard(Graphics g){
         g.setColor(Color.BLACK);
         for(int r=0;r<length;r++){
-            g.drawLine(r*30,0,1,900);
+            g.drawLine(r*boardSpacing,0,r*boardSpacing,600);
             for(int c=0;c<width;c++){
-                g.drawLine(0,c*30,900,1);
+                g.drawLine(0,c*boardSpacing,600,c*boardSpacing);
                 //HAVE IT DRAW RECTANGLES AT EVERY 1;
+                System.out.print(gameBoard[r][c] + " ");
                 if(gameBoard[r][c] ==1){
-                    g.drawRect(r*30,c*30,30,30);
+                    g.fillRect(c*boardSpacing, r*boardSpacing,boardSpacing,boardSpacing);
                 }
-            }
+            }                
+            System.out.println();
         }
     }
     
