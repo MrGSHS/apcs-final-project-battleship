@@ -57,7 +57,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="SizeText" min="-2" max="-2" attributes="0"/>
-                              <Component id="speedText" min="-2" max="-2" attributes="0"/>
+                              <Component id="SpeedText" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       </Group>
@@ -69,7 +69,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="AddShipButton" min="-2" max="-2" attributes="0"/>
                               <Component id="PLengthLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -111,7 +111,7 @@
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="SpeedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="speedText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SpeedText" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -136,7 +136,7 @@
                   <EmptySpace pref="48" max="32767" attributes="0"/>
                   <Component id="jProgressBar1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="AddShipButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -153,19 +153,21 @@
             <Property name="text" type="java.lang.String" value="Enter Speed"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="speedText">
+        <Component class="javax.swing.JTextField" name="SpeedText">
           <Properties>
             <Property name="text" type="java.lang.String" value="          "/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter Speed"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="speedTextMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="speedTextActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="speedTextKeyPressed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SpeedTextMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SpeedTextActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SpeedTextKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="SizeText">
           <Properties>
             <Property name="text" type="java.lang.String" value="          "/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter size"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SizeTextMouseClicked"/>
@@ -183,6 +185,7 @@
         <Component class="javax.swing.JTextField" name="RowText">
           <Properties>
             <Property name="text" type="java.lang.String" value="          "/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter Row"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="RowTextMouseClicked"/>
@@ -198,7 +201,7 @@
         <Component class="javax.swing.JTextField" name="ColText">
           <Properties>
             <Property name="text" type="java.lang.String" value="          "/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter Column"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ColTextMouseClicked"/>
@@ -214,7 +217,7 @@
         <Component class="javax.swing.JTextField" name="PWidthText">
           <Properties>
             <Property name="text" type="java.lang.String" value="          "/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter Pattern&apos;s Width"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PWidthTextMouseClicked"/>
@@ -230,7 +233,7 @@
         <Component class="javax.swing.JTextField" name="PLengthText">
           <Properties>
             <Property name="text" type="java.lang.String" value="          "/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter Pattern Length"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PLengthTextMouseClicked"/>
@@ -238,13 +241,12 @@
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PLengthTextKeyPressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="AddShipButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Add Ship"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddShipButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

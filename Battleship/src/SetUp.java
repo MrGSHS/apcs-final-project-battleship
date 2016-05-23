@@ -14,7 +14,7 @@ public class SetUp extends javax.swing.JFrame {
 
     private String speed, size, row, col, patternW, patternL;
     Rectangle r1, r2, r3, r4, r5, r6;
-    Battleship b1, b2, b3 ,b4, b5, b6;
+    Battleship b1, b2, b3, b4, b5, b6;
 
     /**
      * Creates new form SetUp
@@ -35,7 +35,7 @@ public class SetUp extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         SizeLabel = new javax.swing.JLabel();
         SpeedLabel = new javax.swing.JLabel();
-        speedText = new javax.swing.JTextField();
+        SpeedText = new javax.swing.JTextField();
         SizeText = new javax.swing.JTextField();
         jProgressBar1 = new javax.swing.JProgressBar();
         bRow = new javax.swing.JLabel();
@@ -46,7 +46,7 @@ public class SetUp extends javax.swing.JFrame {
         PWidthText = new javax.swing.JTextField();
         PLengthLabel = new javax.swing.JLabel();
         PLengthText = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        AddShipButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,24 +54,26 @@ public class SetUp extends javax.swing.JFrame {
 
         SpeedLabel.setText("Enter Speed");
 
-        speedText.setText("          ");
-        speedText.addMouseListener(new java.awt.event.MouseAdapter() {
+        SpeedText.setText("          ");
+        SpeedText.setToolTipText("Enter Speed");
+        SpeedText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                speedTextMouseClicked(evt);
+                SpeedTextMouseClicked(evt);
             }
         });
-        speedText.addActionListener(new java.awt.event.ActionListener() {
+        SpeedText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                speedTextActionPerformed(evt);
+                SpeedTextActionPerformed(evt);
             }
         });
-        speedText.addKeyListener(new java.awt.event.KeyAdapter() {
+        SpeedText.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                speedTextKeyPressed(evt);
+                SpeedTextKeyPressed(evt);
             }
         });
 
         SizeText.setText("          ");
+        SizeText.setToolTipText("Enter size");
         SizeText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SizeTextMouseClicked(evt);
@@ -91,6 +93,7 @@ public class SetUp extends javax.swing.JFrame {
         bRow.setText("Enter Ship's Row:");
 
         RowText.setText("          ");
+        RowText.setToolTipText("Enter Row");
         RowText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RowTextMouseClicked(evt);
@@ -110,7 +113,7 @@ public class SetUp extends javax.swing.JFrame {
         bColLabel.setText("Enter Ship's Col:");
 
         ColText.setText("          ");
-        ColText.setToolTipText("");
+        ColText.setToolTipText("Enter Column");
         ColText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ColTextMouseClicked(evt);
@@ -130,7 +133,7 @@ public class SetUp extends javax.swing.JFrame {
         PWidthLabel.setText("Enter Pattern's Width:");
 
         PWidthText.setText("          ");
-        PWidthText.setToolTipText("");
+        PWidthText.setToolTipText("Enter Pattern's Width");
         PWidthText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PWidthTextMouseClicked(evt);
@@ -150,7 +153,7 @@ public class SetUp extends javax.swing.JFrame {
         PLengthLabel.setText("Enter Pattern's length:");
 
         PLengthText.setText("          ");
-        PLengthText.setToolTipText("");
+        PLengthText.setToolTipText("Enter Pattern Length");
         PLengthText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PLengthTextMouseClicked(evt);
@@ -167,15 +170,10 @@ public class SetUp extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Add Ship");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AddShipButton.setText("Add Ship");
+        AddShipButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AddShipButtonActionPerformed(evt);
             }
         });
 
@@ -193,7 +191,7 @@ public class SetUp extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SizeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(speedText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SpeedText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(51, 51, 51))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(PWidthLabel)
@@ -202,7 +200,7 @@ public class SetUp extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(AddShipButton)
                             .addComponent(PLengthLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(PLengthText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -232,7 +230,7 @@ public class SetUp extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SpeedLabel)
-                    .addComponent(speedText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SpeedText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bRow)
@@ -252,7 +250,7 @@ public class SetUp extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(AddShipButton)
                 .addContainerGap())
         );
 
@@ -276,26 +274,29 @@ public class SetUp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void speedTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speedTextActionPerformed
+    private void SpeedTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpeedTextActionPerformed
         // TODO add your handling code here:
-        speed = this.speedText.getText();
-    }//GEN-LAST:event_speedTextActionPerformed
+        speed = this.SpeedText.getText();
+    }//GEN-LAST:event_SpeedTextActionPerformed
 
     private void SizeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SizeTextActionPerformed
         // TODO add your handling code here: 
     }//GEN-LAST:event_SizeTextActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AddShipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddShipButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        if(b1.getSize()==0){
-            r1=new Rectangle(Integer.parseInt(row),Integer.parseInt(col),Integer.parseInt(patternW),Integer.parseInt(patternL));
-            b1= new Battleship(Integer.parseInt(size),Integer.parseInt(speed),r1,Integer.parseInt(row),Integer.parseInt(col));
+        if (b1.getSize() == 0) {
+            r1 = new Rectangle(Integer.parseInt(row), Integer.parseInt(col), Integer.parseInt(patternW), Integer.parseInt(patternL));
+            b1 = new Battleship(Integer.parseInt(size), Integer.parseInt(speed), r1, Integer.parseInt(row), Integer.parseInt(col));
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+        SizeText.setText("");
+        SpeedText.setText("");
+        RowText.setText("");
+        ColText.setText("");
+        PWidthText.setText("");
+        PLengthText.setText("");
+
+    }//GEN-LAST:event_AddShipButtonActionPerformed
 
     private void RowTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RowTextActionPerformed
         // TODO add your handling code here:
@@ -329,17 +330,17 @@ public class SetUp extends javax.swing.JFrame {
         SizeText.requestFocusInWindow();
     }//GEN-LAST:event_SizeTextMouseClicked
 
-    private void speedTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_speedTextMouseClicked
+    private void SpeedTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SpeedTextMouseClicked
         // TODO add your handling code here:
-        speedText.requestFocusInWindow();
-    }//GEN-LAST:event_speedTextMouseClicked
+        SpeedText.requestFocusInWindow();
+    }//GEN-LAST:event_SpeedTextMouseClicked
 
-    private void speedTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_speedTextKeyPressed
+    private void SpeedTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpeedTextKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            speed = this.speedText.getText();
+            speed = this.SpeedText.getText();
         }
-    }//GEN-LAST:event_speedTextKeyPressed
+    }//GEN-LAST:event_SpeedTextKeyPressed
 
     private void RowTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RowTextMouseClicked
         // TODO add your handling code here:
@@ -425,6 +426,7 @@ public class SetUp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddShipButton;
     private javax.swing.JTextField ColText;
     private javax.swing.JLabel PLengthLabel;
     private javax.swing.JTextField PLengthText;
@@ -434,11 +436,10 @@ public class SetUp extends javax.swing.JFrame {
     private javax.swing.JLabel SizeLabel;
     private javax.swing.JTextField SizeText;
     private javax.swing.JLabel SpeedLabel;
+    private javax.swing.JTextField SpeedText;
     private javax.swing.JLabel bColLabel;
     private javax.swing.JLabel bRow;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JTextField speedText;
     // End of variables declaration//GEN-END:variables
 }
