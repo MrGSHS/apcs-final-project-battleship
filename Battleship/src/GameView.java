@@ -26,14 +26,12 @@ public class GameView extends javax.swing.JPanel {
          Pattern rect = new Rectangle(1, 1, 6, 6);
         
         //System.out.println(rect.toString());
-        Battleship battle = new Battleship(6, 7, rect, 3, 6);
+        Battleship battle = new Battleship(3, 1, rect, 1, 1);
         //Battleship battle2 = new Battleship()
         int[][] gameBoard = new int[30][30];
         Battleship[] array = new Battleship[1];
         array[0] = battle;
         GameBoard game1 = new GameBoard(array);
-        g.setColor(Color.BLACK);
-        g.drawRect(0,0,50,50);
         game1.drawBoard(g);
     }
     /**
