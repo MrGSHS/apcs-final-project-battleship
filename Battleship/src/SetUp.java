@@ -1,9 +1,11 @@
+
+import java.awt.event.KeyEvent;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author maorgozalzani
@@ -11,6 +13,8 @@
 public class SetUp extends javax.swing.JFrame {
 
     private String speed, size, row, col, patternW, patternL;
+    Rectangle r1, r2, r3, r4, r5, r6;
+    Battleship b1, b2, b3 ,b4, b5, b6;
 
     /**
      * Creates new form SetUp
@@ -51,25 +55,55 @@ public class SetUp extends javax.swing.JFrame {
         SpeedLabel.setText("Enter Speed");
 
         speedText.setText("          ");
+        speedText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                speedTextMouseClicked(evt);
+            }
+        });
         speedText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 speedTextActionPerformed(evt);
             }
         });
+        speedText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                speedTextKeyPressed(evt);
+            }
+        });
 
         SizeText.setText("          ");
+        SizeText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SizeTextMouseClicked(evt);
+            }
+        });
         SizeText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SizeTextActionPerformed(evt);
+            }
+        });
+        SizeText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SizeTextKeyPressed(evt);
             }
         });
 
         bRow.setText("Enter Ship's Row:");
 
         RowText.setText("          ");
+        RowText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RowTextMouseClicked(evt);
+            }
+        });
         RowText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RowTextActionPerformed(evt);
+            }
+        });
+        RowText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RowTextKeyPressed(evt);
             }
         });
 
@@ -77,9 +111,19 @@ public class SetUp extends javax.swing.JFrame {
 
         ColText.setText("          ");
         ColText.setToolTipText("");
+        ColText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ColTextMouseClicked(evt);
+            }
+        });
         ColText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ColTextActionPerformed(evt);
+            }
+        });
+        ColText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ColTextKeyPressed(evt);
             }
         });
 
@@ -87,9 +131,19 @@ public class SetUp extends javax.swing.JFrame {
 
         PWidthText.setText("          ");
         PWidthText.setToolTipText("");
+        PWidthText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PWidthTextMouseClicked(evt);
+            }
+        });
         PWidthText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PWidthTextActionPerformed(evt);
+            }
+        });
+        PWidthText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PWidthTextKeyPressed(evt);
             }
         });
 
@@ -97,9 +151,19 @@ public class SetUp extends javax.swing.JFrame {
 
         PLengthText.setText("          ");
         PLengthText.setToolTipText("");
+        PLengthText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PLengthTextMouseClicked(evt);
+            }
+        });
         PLengthText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PLengthTextActionPerformed(evt);
+            }
+        });
+        PLengthText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PLengthTextKeyPressed(evt);
             }
         });
 
@@ -119,21 +183,6 @@ public class SetUp extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bRow)
-                            .addComponent(bColLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ColText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RowText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,6 +206,21 @@ public class SetUp extends javax.swing.JFrame {
                             .addComponent(PLengthLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(PLengthText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bRow)
+                            .addComponent(bColLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ColText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RowText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +249,9 @@ public class SetUp extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PLengthLabel)
                     .addComponent(PLengthText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -218,8 +282,7 @@ public class SetUp extends javax.swing.JFrame {
     }//GEN-LAST:event_speedTextActionPerformed
 
     private void SizeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SizeTextActionPerformed
-        // TODO add your handling code here:
-        size = this.SizeText.getText();
+        // TODO add your handling code here: 
     }//GEN-LAST:event_SizeTextActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -228,23 +291,103 @@ public class SetUp extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        if(b1.getSize()==0){
+            r1=new Rectangle(Integer.parseInt(row),Integer.parseInt(col),Integer.parseInt(patternW),Integer.parseInt(patternL));
+            b1= new Battleship(Integer.parseInt(size),Integer.parseInt(speed),r1,Integer.parseInt(row),Integer.parseInt(col));
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void RowTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RowTextActionPerformed
         // TODO add your handling code here:
+        row = RowText.getText();
     }//GEN-LAST:event_RowTextActionPerformed
 
     private void ColTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColTextActionPerformed
         // TODO add your handling code here:
+        col = ColText.getText();
     }//GEN-LAST:event_ColTextActionPerformed
 
     private void PWidthTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PWidthTextActionPerformed
         // TODO add your handling code here:
+        patternW = PWidthText.getText();
     }//GEN-LAST:event_PWidthTextActionPerformed
 
     private void PLengthTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PLengthTextActionPerformed
         // TODO add your handling code here:
+        patternL = PLengthText.getText();
     }//GEN-LAST:event_PLengthTextActionPerformed
+
+    private void SizeTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SizeTextKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            size = this.SizeText.getText();
+        }
+    }//GEN-LAST:event_SizeTextKeyPressed
+
+    private void SizeTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SizeTextMouseClicked
+        // TODO add your handling code here:
+        SizeText.requestFocusInWindow();
+    }//GEN-LAST:event_SizeTextMouseClicked
+
+    private void speedTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_speedTextMouseClicked
+        // TODO add your handling code here:
+        speedText.requestFocusInWindow();
+    }//GEN-LAST:event_speedTextMouseClicked
+
+    private void speedTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_speedTextKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            speed = this.speedText.getText();
+        }
+    }//GEN-LAST:event_speedTextKeyPressed
+
+    private void RowTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RowTextMouseClicked
+        // TODO add your handling code here:
+        RowText.requestFocusInWindow();
+    }//GEN-LAST:event_RowTextMouseClicked
+
+    private void RowTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RowTextKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            row = this.RowText.getText();
+        }
+    }//GEN-LAST:event_RowTextKeyPressed
+
+    private void ColTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ColTextMouseClicked
+        // TODO add your handling code here:
+        ColText.requestFocusInWindow();
+    }//GEN-LAST:event_ColTextMouseClicked
+
+    private void ColTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColTextKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            col = this.ColText.getText();
+        }
+    }//GEN-LAST:event_ColTextKeyPressed
+
+    private void PWidthTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PWidthTextMouseClicked
+        // TODO add your handling code here:
+        PWidthText.requestFocusInWindow();
+    }//GEN-LAST:event_PWidthTextMouseClicked
+
+    private void PWidthTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PWidthTextKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            patternW = this.PWidthText.getText();
+        }
+    }//GEN-LAST:event_PWidthTextKeyPressed
+
+    private void PLengthTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PLengthTextMouseClicked
+        // TODO add your handling code here:
+        PLengthText.requestFocusInWindow();
+    }//GEN-LAST:event_PLengthTextMouseClicked
+
+    private void PLengthTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PLengthTextKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            patternL = this.PLengthText.getText();
+        }
+    }//GEN-LAST:event_PLengthTextKeyPressed
 
     /**
      * @param args the command line arguments

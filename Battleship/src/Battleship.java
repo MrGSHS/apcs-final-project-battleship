@@ -58,6 +58,10 @@ public class Battleship {
         return speed;
     }
     
+    public int getSize(){
+        return size;
+    }
+    
     public void setSpeed(int speed){
         this.speed=speed;
     }
