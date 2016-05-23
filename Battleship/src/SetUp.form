@@ -26,7 +26,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -34,17 +34,32 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="299" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="296" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel2">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="527" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="384" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
     <Container class="javax.swing.JPanel" name="jPanel1">
 
       <Layout>
@@ -55,7 +70,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="PWidthLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="PWidthText" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -93,12 +108,15 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="progressBar" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="newShip" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="errorLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="progressBar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -107,10 +125,6 @@
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="AddShipButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ErrorText" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -153,9 +167,9 @@
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="AddShipButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="31" max="32767" attributes="0"/>
+                  <Component id="errorLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ErrorText" min="-2" pref="23" max="-2" attributes="0"/>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -173,24 +187,22 @@
         </Component>
         <Component class="javax.swing.JTextField" name="SpeedText">
           <Properties>
+            <Property name="columns" type="int" value="3"/>
             <Property name="text" type="java.lang.String" value="          "/>
             <Property name="toolTipText" type="java.lang.String" value="Enter Speed"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SpeedTextMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SpeedTextActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SpeedTextKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="SizeText">
           <Properties>
+            <Property name="columns" type="int" value="3"/>
             <Property name="text" type="java.lang.String" value="          "/>
             <Property name="toolTipText" type="java.lang.String" value="Enter Size"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SizeTextMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SizeTextActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SizeTextKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JProgressBar" name="progressBar">
@@ -207,13 +219,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="RowText">
           <Properties>
+            <Property name="columns" type="int" value="3"/>
             <Property name="text" type="java.lang.String" value="          "/>
             <Property name="toolTipText" type="java.lang.String" value="Enter Row"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="RowTextMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RowTextActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RowTextKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="bColLabel">
@@ -223,13 +234,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="ColText">
           <Properties>
+            <Property name="columns" type="int" value="3"/>
             <Property name="text" type="java.lang.String" value="          "/>
             <Property name="toolTipText" type="java.lang.String" value="Enter Column"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ColTextMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ColTextActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ColTextKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="PWidthLabel">
@@ -239,13 +249,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="PWidthText">
           <Properties>
+            <Property name="columns" type="int" value="3"/>
             <Property name="text" type="java.lang.String" value="          "/>
             <Property name="toolTipText" type="java.lang.String" value="Can&apos;t be smaller than size"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PWidthTextMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PWidthTextActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PWidthTextKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="PLengthLabel">
@@ -255,13 +264,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="PLengthText">
           <Properties>
+            <Property name="columns" type="int" value="3"/>
             <Property name="text" type="java.lang.String" value="          "/>
             <Property name="toolTipText" type="java.lang.String" value="Can&apos;t be smaller than size"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PLengthTextMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PLengthTextActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PLengthTextKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="AddShipButton">
@@ -283,31 +291,15 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newShipActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="ErrorText">
+        <Component class="javax.swing.JLabel" name="errorLabel">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="fa" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="          "/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="text" type="java.lang.String" value="&quot;Please enter valid values      "/>
           </Properties>
         </Component>
       </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="jPanel2">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="336" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="381" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
     </Container>
   </SubComponents>
 </Form>
