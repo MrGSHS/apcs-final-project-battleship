@@ -15,23 +15,29 @@ import java.util.ArrayList;
  */
 public class GameView extends javax.swing.JPanel {
     
+    private ArrayList<Battleship> list;
     /**
      * Creates new form GameView
      */
-    public GameView() {
+    public GameView(ArrayList<Battleship> battle) {
+        list = battle;
         initComponents();
+    }
+    
+    public void addShip(Battleship battle){
+        list.add(battle);
+        repaint();
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-         Pattern rect = new Rectangle(1, 1, 6, 6);
-        
-        //System.out.println(rect.toString());
-        Battleship battle = new Battleship(3, 1, rect, 1, 1);
-        //Battleship battle2 = new Battleship()
-        int[][] gameBoard = new int[30][30];
-        ArrayList<Battleship> list = new ArrayList<>();
-        list.add(battle);
+//         Pattern rect = new Rectangle(1, 1, 6, 6);
+//        
+//        //System.out.println(rect.toString());
+//        Battleship battle = new Battleship(3, 1, rect, 1, 1);
+//        //Battleship battle2 = new Battleship()
+//        int[][] gameBoard = new int[30][30];
+//        list.add(battle);
         GameBoard game1 = new GameBoard(list);
         game1.drawBoard(g);
     }

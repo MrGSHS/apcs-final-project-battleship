@@ -287,7 +287,7 @@ public class SetUp extends javax.swing.JFrame {
         PWidthText.setText("");
         PLengthText.setText("");
         errorLabel.setVisible(false);
-        
+        boardPanel.addShip(bArray.get(bArray.size()-1));
     }//GEN-LAST:event_newShipActionPerformed
 
     /**
