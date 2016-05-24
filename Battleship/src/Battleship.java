@@ -197,4 +197,8 @@ public class Battleship {
         return gameBoard;
     }
     
+    public String toString(){
+        return "size: "+size+ "speed: "+speed;
+    }
+    
 }

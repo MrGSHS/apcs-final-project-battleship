@@ -1,5 +1,6 @@
 
-import java.awt.event.KeyEvent;
+import java.awt.Color;
+import java.util.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,16 +14,18 @@ import java.awt.event.KeyEvent;
 public class SetUp extends javax.swing.JFrame {
 
     private String speed, size, row, col, patternW, patternL;
-    private Rectangle r1, r2, r3, r4, r5, r6;
-    private Battleship b1, b2, b3, b4, b5, b6;
-    private Rectangle[] rArray = new Rectangle[6];
-    private Battleship[] bArray = new Battleship[6];
+    private List<Rectangle> rArray = new ArrayList<Rectangle>();
+    private List<Battleship> bArray = new ArrayList<Battleship>();
 
     /**
      * Creates new form SetUp
      */
     public SetUp() {
         initComponents();
+        errorLabel.setVisible(false);
+        progressBar.setVisible(false);
+        addedLabel.setVisible(false);
+
     }
 
     /**
@@ -34,8 +37,8 @@ public class SetUp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        boardPanel = new javax.swing.JPanel();
+        setUpPanel = new javax.swing.JPanel();
         SizeLabel = new javax.swing.JLabel();
         SpeedLabel = new javax.swing.JLabel();
         SpeedText = new javax.swing.JTextField();
@@ -52,18 +55,19 @@ public class SetUp extends javax.swing.JFrame {
         AddShipButton = new javax.swing.JButton();
         newShip = new javax.swing.JButton();
         errorLabel = new javax.swing.JLabel();
+        addedLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
+        javax.swing.GroupLayout boardPanelLayout = new javax.swing.GroupLayout(boardPanel);
+        boardPanel.setLayout(boardPanelLayout);
+        boardPanelLayout.setHorizontalGroup(
+            boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+        boardPanelLayout.setVerticalGroup(
+            boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
         );
 
         SizeLabel.setText("Enter Size:");
@@ -73,20 +77,10 @@ public class SetUp extends javax.swing.JFrame {
         SpeedText.setColumns(3);
         SpeedText.setText("          ");
         SpeedText.setToolTipText("Enter Speed");
-        SpeedText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SpeedTextActionPerformed(evt);
-            }
-        });
 
         SizeText.setColumns(3);
         SizeText.setText("          ");
         SizeText.setToolTipText("Enter Size");
-        SizeText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SizeTextActionPerformed(evt);
-            }
-        });
 
         progressBar.setForeground(new java.awt.Color(0, 250, 0));
 
@@ -95,46 +89,26 @@ public class SetUp extends javax.swing.JFrame {
         RowText.setColumns(3);
         RowText.setText("          ");
         RowText.setToolTipText("Enter Row");
-        RowText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RowTextActionPerformed(evt);
-            }
-        });
 
         bColLabel.setText("Enter Ship's Col:");
 
         ColText.setColumns(3);
         ColText.setText("          ");
         ColText.setToolTipText("Enter Column");
-        ColText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ColTextActionPerformed(evt);
-            }
-        });
 
         PWidthLabel.setText("Enter Pattern's Width:");
 
         PWidthText.setColumns(3);
         PWidthText.setText("          ");
-        PWidthText.setToolTipText("Can't be smaller than size");
-        PWidthText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PWidthTextActionPerformed(evt);
-            }
-        });
+        PWidthText.setToolTipText("Can't be >= size");
 
         PLengthLabel.setText("Enter Pattern's length:");
 
         PLengthText.setColumns(3);
         PLengthText.setText("          ");
-        PLengthText.setToolTipText("Can't be smaller than size");
-        PLengthText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PLengthTextActionPerformed(evt);
-            }
-        });
+        PLengthText.setToolTipText("Can't be >= size");
 
-        AddShipButton.setBackground(new java.awt.Color(0, 238, 0));
+        AddShipButton.setBackground(new java.awt.Color(255, 255, 255));
         AddShipButton.setText("Add Ship");
         AddShipButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,90 +126,101 @@ public class SetUp extends javax.swing.JFrame {
         errorLabel.setForeground(new java.awt.Color(250, 0, 0));
         errorLabel.setText("\"Please enter valid values      ");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        addedLabel.setBackground(new java.awt.Color(0, 255, 0));
+        addedLabel.setText("Ship Added!");
+        addedLabel.setToolTipText("");
+
+        javax.swing.GroupLayout setUpPanelLayout = new javax.swing.GroupLayout(setUpPanel);
+        setUpPanel.setLayout(setUpPanelLayout);
+        setUpPanelLayout.setHorizontalGroup(
+            setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(setUpPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, setUpPanelLayout.createSequentialGroup()
                         .addComponent(PWidthLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(PWidthText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(setUpPanelLayout.createSequentialGroup()
                         .addComponent(PLengthLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(PLengthText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, setUpPanelLayout.createSequentialGroup()
+                        .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SizeLabel)
                             .addComponent(SpeedLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SizeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SpeedText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(51, 51, 51))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(setUpPanelLayout.createSequentialGroup()
+                .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(setUpPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bRow)
                             .addComponent(bColLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ColText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(RowText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(setUpPanelLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(newShip))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(setUpPanelLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(errorLabel)
                             .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(AddShipButton)
+            .addGroup(setUpPanelLayout.createSequentialGroup()
+                .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(setUpPanelLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(AddShipButton))
+                    .addGroup(setUpPanelLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(addedLabel)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        setUpPanelLayout.setVerticalGroup(
+            setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(setUpPanelLayout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(newShip)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SizeLabel)
                     .addComponent(SizeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SpeedLabel)
                     .addComponent(SpeedText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bRow)
                     .addComponent(RowText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bColLabel)
                     .addComponent(ColText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PWidthText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PWidthLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PLengthLabel)
                     .addComponent(PLengthText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AddShipButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addedLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(errorLabel)
                 .addContainerGap())
         );
@@ -246,69 +231,50 @@ public class SetUp extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(37, 37, 37)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(setUpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 296, Short.MAX_VALUE))
+                .addComponent(setUpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(boardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SpeedTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpeedTextActionPerformed
-        // TODO add your handling code here:
-        speed = this.SpeedText.getText();
-    }//GEN-LAST:event_SpeedTextActionPerformed
-
-    private void SizeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SizeTextActionPerformed
-        // TODO add your handling code here: 
-    }//GEN-LAST:event_SizeTextActionPerformed
-
     private void AddShipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddShipButtonActionPerformed
         // TODO add your handling code here:
+        speed = SpeedText.getText();
+        size = SizeText.getText();
+        row = RowText.getText();
+        col = ColText.getText();
+        patternW = PWidthText.getText();
+        patternL = PLengthText.getText();
+
         int speed = Integer.parseInt(this.speed);
         int size = Integer.parseInt(this.size);
         int row = Integer.parseInt(this.row);
         int col = Integer.parseInt(this.col);
         int pW = Integer.parseInt(patternW);
         int pL = Integer.parseInt(patternL);
-        for (int i = 0; i < bArray.length; i++) {
-            if (bArray[i] == null) {
-                rArray[i] = new Rectangle(row, col, pW, pL);
-                bArray[i] = new Battleship(size, speed, rArray[i], row, col);
-            }
+        if (size >= pW || size >= pL || size <= 0) {
+            errorLabel.setVisible(true);
+            AddShipButton.setBackground(Color.red);
+        } else {
+            AddShipButton.setBackground(Color.GREEN);
+            errorLabel.setVisible(false);
+            rArray.add(new Rectangle(row, col, pW, pL));
+            bArray.add(new Battleship(size, speed, rArray.get(rArray.size()-1), row, col));
+            addedLabel.setVisible(true);
         }
-
-
     }//GEN-LAST:event_AddShipButtonActionPerformed
-
-    private void RowTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RowTextActionPerformed
-        // TODO add your handling code here:
-        row = RowText.getText();
-    }//GEN-LAST:event_RowTextActionPerformed
-
-    private void ColTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColTextActionPerformed
-        // TODO add your handling code here:
-        col = ColText.getText();
-    }//GEN-LAST:event_ColTextActionPerformed
-
-    private void PWidthTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PWidthTextActionPerformed
-        // TODO add your handling code here:
-        patternW = PWidthText.getText();
-    }//GEN-LAST:event_PWidthTextActionPerformed
-
-    private void PLengthTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PLengthTextActionPerformed
-        // TODO add your handling code here:
-        patternL = PLengthText.getText();
-    }//GEN-LAST:event_PLengthTextActionPerformed
 
     private void newShipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newShipActionPerformed
         // TODO add your handling code here:
@@ -347,9 +313,9 @@ public class SetUp extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(SetUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new SetUp().setVisible(true);
             }
@@ -368,12 +334,13 @@ public class SetUp extends javax.swing.JFrame {
     private javax.swing.JTextField SizeText;
     private javax.swing.JLabel SpeedLabel;
     private javax.swing.JTextField SpeedText;
+    private javax.swing.JLabel addedLabel;
     private javax.swing.JLabel bColLabel;
     private javax.swing.JLabel bRow;
+    private javax.swing.JPanel boardPanel;
     private javax.swing.JLabel errorLabel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton newShip;
     private javax.swing.JProgressBar progressBar;
+    private javax.swing.JPanel setUpPanel;
     // End of variables declaration//GEN-END:variables
 }
