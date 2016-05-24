@@ -15,8 +15,8 @@ import javax.swing.JFrame;
 public class SetUp extends javax.swing.JFrame {
 
     private String speed, size, row, col, patternW, patternL;
-    private List<Rectangle> rArray = new ArrayList<Rectangle>();
-    private List<Battleship> bArray = new ArrayList<Battleship>();
+    private ArrayList<Rectangle> rArray = new ArrayList<>();
+    private ArrayList<Battleship> bArray = new ArrayList<>();
 
     /**
      * Creates new form SetUp
@@ -39,7 +39,7 @@ public class SetUp extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        boardPanel = boardPanel= new GameView();
+        boardPanel = boardPanel= new GameView(bArray);
         setUpPanel = new javax.swing.JPanel();
         SizeLabel = new javax.swing.JLabel();
         SpeedLabel = new javax.swing.JLabel();

@@ -52,7 +52,7 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="boardPanel">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="boardPanel= new GameView();"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="boardPanel= new GameView(bArray);"/>
       </AuxValues>
 
       <Layout>
