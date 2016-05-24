@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,17 +20,17 @@ public class GameBoard {
     private final int width = 30;
     private final int length = 30;
     private final int boardSpacing = 20;
-    private Battleship[] ships = new Battleship[6];
+    private ArrayList<Battleship> ships = new ArrayList<>();
     private int[][] gameBoard = new int[length][width];
     
-    public GameBoard(Battleship[] ships){
+    public GameBoard(ArrayList<Battleship> ships){
         this.ships = ships;
-        for(int i=0; i<ships.length;i++){
-            int tempSpeed = ships[i].getSpeed();
-            ships[i].setSpeed(0);
-            System.out.println("Speed " + ships[i].getSpeed() + " Row: " + ships[i].getRow() + " Col: " + ships[i].getCol());
-            gameBoard = ships[i].move(gameBoard);
-            ships[i].setSpeed(tempSpeed);
+        for(int i=0; i<ships.size();i++){
+            int tempSpeed = ships.get(i).getSpeed();
+            ships.get(i).setSpeed(0);
+            System.out.println("Speed: " + ships.get(i).getSpeed() + " Row: " + ships.get(i).getRow() + " Col: " + ships.get(i).getCol());
+            gameBoard = ships.get(i).move(gameBoard);
+            ships.get(i).setSpeed(tempSpeed);
         }
     }
     

@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,9 +30,9 @@ public class GameView extends javax.swing.JPanel {
         Battleship battle = new Battleship(3, 1, rect, 1, 1);
         //Battleship battle2 = new Battleship()
         int[][] gameBoard = new int[30][30];
-        Battleship[] array = new Battleship[1];
-        array[0] = battle;
-        GameBoard game1 = new GameBoard(array);
+        ArrayList<Battleship> list = new ArrayList<>();
+        list.add(battle);
+        GameBoard game1 = new GameBoard(list);
         game1.drawBoard(g);
     }
     /**

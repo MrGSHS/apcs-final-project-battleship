@@ -22,7 +22,7 @@ public class SetUp extends javax.swing.JFrame {
      */
     public SetUp() {
         initComponents();
-        getContentPane().add(new GameView());
+        add(new GameView());
         pack();
         setVisible(true);
         errorLabel.setVisible(false);
