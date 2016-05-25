@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class GameView extends javax.swing.JPanel {
     
     private ArrayList<Battleship> list;
+    private GameBoard game1;
     /**
      * Creates new form GameView
      */
@@ -28,6 +29,11 @@ public class GameView extends javax.swing.JPanel {
         list.add(battle);
         repaint();
     }
+    
+    public void update(){
+        repaint();
+       
+    }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -38,8 +44,9 @@ public class GameView extends javax.swing.JPanel {
 //        //Battleship battle2 = new Battleship()
 //        int[][] gameBoard = new int[30][30];
 //        list.add(battle);
-        GameBoard game1 = new GameBoard(list);
+        game1 = new GameBoard(list);
         game1.drawBoard(g);
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
