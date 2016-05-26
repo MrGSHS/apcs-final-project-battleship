@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -23,19 +24,21 @@ public class TestGameView extends JPanel{
     
 
     public static void main(String[] args) {
-//        Pattern rect = new Rectangle(1, 1, 6, 6);
+       Pattern rect = new Rectangle(1, 1, 6, 6);
 //        
 //        //System.out.println(rect.toString());
-//        Battleship battle = new Battleship(6, 7, rect, 3, 6);
-//        //Battleship battle2 = new Battleship()
+        Battleship battle = new Battleship(6, 7, rect, 3, 6);
+        Battleship battle2 = new Battleship(3,3,rect,20,20);
 //        //System.out.println(battle.getOrientation() + "\n" + "move");
 //        int[][] gameBoard = new int[30][30];
-//        Battleship[] array = new Battleship[1];
+        ArrayList<Battleship> array = new ArrayList<Battleship>();
+        array.add(battle);
+        //array.add(battle2);
 //        array[0] = battle;
 //        GameBoard game1 = new GameBoard(array);
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       
-        frame.getContentPane().add(new GameView());
+        frame.getContentPane().add(new GameView(array));
         frame.pack();
         frame.setVisible(true);
 //        game1.drawBoard(g);
