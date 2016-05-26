@@ -2,6 +2,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,8 +16,9 @@ import java.util.ArrayList;
  */
 public class GameView extends javax.swing.JPanel {
     
-    private ArrayList<Battleship> list;
+    private static ArrayList<Battleship> list;
     private GameBoard game1;
+    private static JFrame frame;
     /**
      * Creates new form GameView
      */
@@ -47,6 +49,14 @@ public class GameView extends javax.swing.JPanel {
         game1 = new GameBoard(list);
         game1.drawBoard(g);
         
+    }
+    
+    public static void main(String[] args) {
+        frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       
+        frame.getContentPane().add(new GameView(list));
+        frame.pack();
+        frame.setVisible(true);
     }
     /**
      * This method is called from within the constructor to initialize the form.

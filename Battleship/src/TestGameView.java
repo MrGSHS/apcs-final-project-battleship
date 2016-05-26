@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 
 
 
-public class Try extends JPanel{
+public class TestGameView extends JPanel{
     
     private static JFrame frame;
     

@@ -34,6 +34,18 @@ public class GameBoard {
         }
     }
     
+    public int getWidth(){
+        return width;
+    }
+    
+    public int getLength(){
+        return length;
+    }
+    
+    public int[][] getBoard(){
+        return gameBoard;
+    }
+    
     public void drawBoard(Graphics g){
         g.setColor(Color.BLACK);
         for(int r=0;r<length;r++){

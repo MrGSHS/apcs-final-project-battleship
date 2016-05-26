@@ -284,6 +284,10 @@ public class SetUp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AddShipButtonActionPerformed
 
+    public ArrayList<Battleship> getList(){
+        return bArray;
+    }
+    
     private void newShipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newShipActionPerformed
         // TODO add your handling code here:
         SizeText.setText("");
