@@ -45,6 +45,10 @@ public class Rectangle extends Pattern {
         }
     }
 
+    public int[][] getPatternOnBoard(){
+        return patternOnBoard;
+    }
+    
     public int getLength() {
         return length+1;
     }

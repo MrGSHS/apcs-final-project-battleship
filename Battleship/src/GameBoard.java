@@ -23,6 +23,7 @@ public class GameBoard {
     private final int boardSpacing = 20;
     private ArrayList<Battleship> ships = new ArrayList<>();
     private int[][] gameBoard = new int[length][width];
+    private int[][] patterns = new int[length][width];
     
     public GameBoard(ArrayList<Battleship> ships){
         this.ships = ships;
@@ -32,6 +33,14 @@ public class GameBoard {
             System.out.println("Speed: " + ships.get(i).getSpeed() + " Row: " + ships.get(i).getRow() + " Col: " + ships.get(i).getCol());
             gameBoard = ships.get(i).move(gameBoard);
             ships.get(i).setSpeed(tempSpeed);
+            int temp[][] = ships.get(i).getPattern().getPatternOnBoard();
+            for(int r=0; r<temp.length; r++){
+                for(int c=0;c<temp[r].length;c++){
+                    if(temp[r][c] == 1){
+                        patterns[r][c] = 1;
+                    }
+                }
+            }
         }
     }
     
@@ -48,6 +57,14 @@ public class GameBoard {
     }
     
     public void drawBoard(Graphics g){
+        g.setColor(Color.RED);
+        for(int r=0;r<patterns.length;r++){
+            for(int c=0;c<patterns[r].length;c++){
+                if(patterns[r][c] == 1){
+                    g.fillRect(c*boardSpacing, r*boardSpacing,boardSpacing,boardSpacing);
+                }
+            }
+        }
         g.setColor(Color.BLACK);
         for(int r=0;r<length;r++){
             g.drawLine(r*boardSpacing,0,r*boardSpacing,600);

@@ -17,5 +17,6 @@ public abstract class Pattern {
     public abstract int getStartR();
     public abstract int getStartC();
     public abstract void updateOrientation(Battleship battleship);
+    public abstract int[][] getPatternOnBoard();
 
 }

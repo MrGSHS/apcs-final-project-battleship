@@ -97,6 +97,10 @@ public class Battleship {
         g.setColor(Color.BLACK);
     }
     
+    public Pattern getPattern(){
+        return pattern;
+    }
+    
     /**
      * Moves ship around in it's the gameboard
      * @param gameBoard
