@@ -7,6 +7,7 @@
 /**
  *
  * @author apieprz6
+ * abstract class used to "host" all types of patterns
  */
 public abstract class Pattern {
     public Pattern(){}

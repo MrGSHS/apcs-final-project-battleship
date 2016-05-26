@@ -7,6 +7,7 @@
 /**
  *
  * @author apieprz6
+ * Child of pattern, makes a specific rectangle pattern
  */
 public class Rectangle extends Pattern {
 
@@ -74,7 +75,12 @@ public class Rectangle extends Pattern {
             battleship.setOrientation(Battleship.north);
         }
     }
-
+    /**
+     * 
+     * @param battleship 
+     * Meant to check if the ship moves around the pattern correctly and sets it in the right place
+     * in the pattern
+     */
     @Override
     public void getNewPosition(Battleship battleship) {
         int speed = battleship.getSpeed()-1;

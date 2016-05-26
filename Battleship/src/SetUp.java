@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 /**
  *
  * @author maorgozalzani
+ * Makes the setup window frame
  */
 public class SetUp extends javax.swing.JFrame {
 

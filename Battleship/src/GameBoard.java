@@ -12,6 +12,7 @@ import java.util.ArrayList;
 /**
  *
  * @author alexpieprzycki
+ * Includes info about the game board as a whole
  */
 
 

@@ -12,7 +12,10 @@ import java.awt.Graphics;
 /**
  *
  * @author apieprz6
+ * Makes a battleship object
  */
+
+
 public class Battleship {
     public static final String north = "north";
     public static final String east = "east";
@@ -93,6 +96,13 @@ public class Battleship {
     public void drawGame(Graphics g){
         g.setColor(Color.BLACK);
     }
+    
+    /**
+     * Moves ship around in it's the gameboard
+     * @param gameBoard
+     * @return returns the new array of gameboard with the ship marked as 1's or 2's
+     * for hits and the rest marked as 0's 
+     */
     
     public int[][] move(int[][] gameBoard){
         pattern.getNewPosition(this);

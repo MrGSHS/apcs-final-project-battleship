@@ -9,6 +9,7 @@ import java.util.ArrayList;
 /**
  *
  * @author maorgozalzani
+ * Used to make the AI randomized selection
  */
 public class ComputerPlayer {
 
