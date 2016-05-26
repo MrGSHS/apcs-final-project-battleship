@@ -83,7 +83,7 @@ public class Rectangle extends Pattern {
      */
     @Override
     public void getNewPosition(Battleship battleship) {
-        int speed = battleship.getSpeed()-1;
+        int speed = battleship.getSpeed();
         int intR = battleship.getRow();
         int intC = battleship.getCol();
         if (intR == startR) {
