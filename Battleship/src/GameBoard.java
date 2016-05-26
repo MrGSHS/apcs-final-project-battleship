@@ -60,10 +60,12 @@ public class GameBoard {
         g.setColor(Color.RED);
         for(int r=0;r<patterns.length;r++){
             for(int c=0;c<patterns[r].length;c++){
+                System.out.println(patterns[r][c] + " ");
                 if(patterns[r][c] == 1){
                     g.fillRect(c*boardSpacing, r*boardSpacing,boardSpacing,boardSpacing);
                 }
             }
+            System.out.println();
         }
         g.setColor(Color.BLACK);
         for(int r=0;r<length;r++){
