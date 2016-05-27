@@ -29,6 +29,8 @@ public class SetUp extends javax.swing.JFrame {
         errorLabel.setVisible(false);
         progressBar.setVisible(false);
         addedLabel.setVisible(false);
+        doneButton.setVisible(false);
+
 
     }
     
@@ -62,18 +64,19 @@ public class SetUp extends javax.swing.JFrame {
         newShip = new javax.swing.JButton();
         errorLabel = new javax.swing.JLabel();
         addedLabel = new javax.swing.JLabel();
+        doneButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout boardPanelLayout = new javax.swing.GroupLayout(boardPanel);
         boardPanel.setLayout(boardPanelLayout);
         boardPanelLayout.setHorizontalGroup(
             boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
+            .addGap(0, 601, Short.MAX_VALUE)
         );
         boardPanelLayout.setVerticalGroup(
             boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 683, Short.MAX_VALUE)
         );
 
         SizeLabel.setText("Enter Size:");
@@ -86,7 +89,7 @@ public class SetUp extends javax.swing.JFrame {
 
         SizeText.setColumns(3);
         SizeText.setText("          ");
-        SizeText.setToolTipText("Enter Size");
+        SizeText.setToolTipText("Greater than 0");
 
         progressBar.setForeground(new java.awt.Color(0, 250, 0));
 
@@ -106,13 +109,13 @@ public class SetUp extends javax.swing.JFrame {
 
         PWidthText.setColumns(3);
         PWidthText.setText("          ");
-        PWidthText.setToolTipText("Can't be >= size");
+        PWidthText.setToolTipText("Can't be <= size");
 
         PLengthLabel.setText("Enter Pattern's length:");
 
         PLengthText.setColumns(3);
         PLengthText.setText("          ");
-        PLengthText.setToolTipText("Can't be >= size");
+        PLengthText.setToolTipText("Can't be <= size");
 
         AddShipButton.setBackground(new java.awt.Color(255, 255, 255));
         AddShipButton.setText("Add Ship");
@@ -135,6 +138,15 @@ public class SetUp extends javax.swing.JFrame {
         addedLabel.setBackground(new java.awt.Color(0, 255, 0));
         addedLabel.setText("Ship Added!");
         addedLabel.setToolTipText("");
+
+        doneButton.setBackground(new java.awt.Color(0, 240, 0));
+        doneButton.setText("Done!");
+        doneButton.setToolTipText("Only Click When Done With Setup");
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout setUpPanelLayout = new javax.swing.GroupLayout(setUpPanel);
         setUpPanel.setLayout(setUpPanelLayout);
@@ -177,10 +189,12 @@ public class SetUp extends javax.swing.JFrame {
                         .addComponent(newShip))
                     .addGroup(setUpPanelLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(errorLabel)
-                            .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, setUpPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(errorLabel)
+                .addGap(16, 16, 16))
             .addGroup(setUpPanelLayout.createSequentialGroup()
                 .addGroup(setUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(setUpPanelLayout.createSequentialGroup()
@@ -188,7 +202,10 @@ public class SetUp extends javax.swing.JFrame {
                         .addComponent(AddShipButton))
                     .addGroup(setUpPanelLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(addedLabel)))
+                        .addComponent(addedLabel))
+                    .addGroup(setUpPanelLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(doneButton)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         setUpPanelLayout.setVerticalGroup(
@@ -226,8 +243,10 @@ public class SetUp extends javax.swing.JFrame {
                 .addComponent(AddShipButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addedLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(doneButton)
                 .addContainerGap())
         );
 
@@ -245,10 +264,11 @@ public class SetUp extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(setUpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 306, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(boardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(boardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(setUpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -285,7 +305,7 @@ public class SetUp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AddShipButtonActionPerformed
 
-    public ArrayList<Battleship> getList(){
+    public  ArrayList<Battleship> getList(){
         return bArray;
     }
     
@@ -298,8 +318,18 @@ public class SetUp extends javax.swing.JFrame {
         PWidthText.setText("");
         PLengthText.setText("");
         errorLabel.setVisible(false);
+        addedLabel.setVisible(true);
+        AddShipButton.setBackground(Color.WHITE);
        // boardPanel.addShip(bArray.get(bArray.size()-1));
     }//GEN-LAST:event_newShipActionPerformed
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        // TODO add your handling code here:
+        ComputerPlayer cPlayer= new ComputerPlayer(game1);
+
+        JFrame playFrame= new GamePlay(bArray, cPlayer.getList());
+        
+    }//GEN-LAST:event_doneButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,6 +384,7 @@ public class SetUp extends javax.swing.JFrame {
     private javax.swing.JLabel bRow;
     private javax.swing.JPanel boardPanel;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton doneButton;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JButton newShip;
     private javax.swing.JProgressBar progressBar;

@@ -25,6 +25,10 @@ public class ComputerPlayer {
         //comBoard = new GameBoard(comList);
         userBoard = this.userBoard;
     }
+    
+    public ArrayList<Battleship> getList(){
+        return comList;
+    }
 
     public void findRandom() {
         int [][] uBoard=userBoard.getBoard();
