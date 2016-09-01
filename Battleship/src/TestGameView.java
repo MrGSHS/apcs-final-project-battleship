@@ -26,14 +26,31 @@ public class TestGameView extends JPanel{
     public static void main(String[] args) {
        Pattern rect = new Rectangle(1, 1, 6, 6);
        Pattern rect2 = new Rectangle(1,15, 6, 6);
+       Pattern rect3 = new Rectangle(10,10,15,15);
 //        //System.out.println(rect.toString());
-        Battleship battle = new Battleship(6, 7, rect, 1, 1);
+        Battleship battle1 = new Battleship(6, 2, rect, 1, 1);
         Battleship battle2 = new Battleship(3,3,rect2,1,15);
+        Battleship battle3 = new Battleship(11,1,rect3,10,10);
+        
+        int[] conditionBattle3 = new int[11];
+        for(int i=0; i<conditionBattle3.length; i++){
+            if(i==4){
+                conditionBattle3[i] = 1;
+            }
+            else{
+                conditionBattle3[i] = 0;
+            }
+            System.out.print(conditionBattle3[i] + " ");
+        }
+        System.out.println();
+        
+        battle3.setConditionOfShip(conditionBattle3);
 //        //System.out.println(battle.getOrientation() + "\n" + "move");
 //        int[][] gameBoard = new int[30][30];
         ArrayList<Battleship> array = new ArrayList<Battleship>();
-        array.add(battle);
+        array.add(battle1);
         array.add(battle2);
+        array.add(battle3);
 //        array[0] = battle;
 //        GameBoard game1 = new GameBoard(array);
         frame = new JFrame();
